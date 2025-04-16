@@ -1,0 +1,20 @@
+@import "./assets/css/bootstrap.min.css";
+@import "./assets/css/plugins.min.css";
+@import "./assets/css/kaiadmin.min.css";
+@import "./assets/css/demo.css";
+
+/* Sidebar collapsed state by default */
+.sidebar {
+    width: 50px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  /* Sidebar full width when open */
+  .sidebar.sidebar-open {
+    width: 265px;
+  }
+  
+  .sidebar.sidebar-open .nav-section .sidebar-mini-icon {
+    display: inline-block !important;
+  }
