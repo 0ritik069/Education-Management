@@ -7,6 +7,10 @@ const AddStudent = () => {
     name: "",
     email: "",
     course: "",
+    dob: "",
+    address: "",
+    phone: "",
+    user_id: 9,  
   });
 
   const navigate = useNavigate();
@@ -19,12 +23,33 @@ const AddStudent = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your API call to submit the form here
 
-    // After submission, redirect to the student list page
-    navigate("/students");
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch("http://192.168.1.82:5000/api/student/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(student),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to add student");
+      }
+
+      alert("Student added successfully!");
+      navigate("/students");
+    } catch (err) {
+      console.error("Error adding student:", err.message);
+      alert(err.message);
+    }
   };
 
   return (
@@ -65,6 +90,42 @@ const AddStudent = () => {
             className="form-control"
             name="course"
             value={student.course}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Date of Birth</label>
+          <input
+            type="date"
+            className="form-control"
+            name="dob"
+            value={student.dob}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Address</label>
+          <input
+            type="text"
+            className="form-control"
+            name="address"
+            value={student.address}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Phone</label>
+          <input
+            type="number"
+            className="form-control"
+            name="phone"
+            value={student.phone}
             onChange={handleInputChange}
             required
           />

@@ -16,7 +16,7 @@ const ChangePassword = () => {
     }
     // Handle password change logic here
     console.log("Password Changed");
-    navigate("/settings"); // Redirect to settings after successful change
+    navigate("/settings"); 
   };
 
   return (

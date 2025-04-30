@@ -7,7 +7,11 @@ const AddInstructor = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    qualifications: "",  
+    subjects: "",        
+    experience: "",     
+    joining_date: "",    
+    department: "",     
   });
 
   const handleChange = (e) => {
@@ -17,11 +21,32 @@ const AddInstructor = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Instructor Added:", formData);
-    // In real app: Send data to API here
-    navigate("/instructors");
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch("http://192.168.1.82:5000/api/teacher/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to add teacher");
+      }
+
+      alert("Teacher added successfully!");
+      navigate("/instructors");
+    } catch (err) {
+      console.error("Error adding instructor:", err.message);
+      alert(err.message);
+    }
   };
 
   return (
@@ -54,12 +79,60 @@ const AddInstructor = () => {
           </div>
 
           <div className="form-group mb-3">
-            <label>Subject</label>
+            <label>Qualifications</label>
             <input
               type="text"
-              name="subject"
+              name="qualifications"
               className="form-control"
-              value={formData.subject}
+              value={formData.qualifications}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label>Subjects</label>
+            <input
+              type="text"
+              name="subjects"
+              className="form-control"
+              value={formData.subjects}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label>Experience</label>
+            <input
+              type="text"
+              name="experience"
+              className="form-control"
+              value={formData.experience}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label>Joining Date</label>
+            <input
+              type="date"
+              name="joining_date"
+              className="form-control"
+              value={formData.joining_date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label>Department</label>
+            <input
+              type="text"
+              name="department"
+              className="form-control"
+              value={formData.department}
               onChange={handleChange}
               required
             />

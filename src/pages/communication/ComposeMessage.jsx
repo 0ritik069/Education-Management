@@ -11,7 +11,7 @@ const ComposeMessage = () => {
     e.preventDefault();
     // Handle form submission (e.g., save message to DB or API)
     console.log("Message Sent:", { subject, message });
-    navigate("/communication/messages"); // Redirect to messages list after submitting
+    navigate("/communication/messages"); 
   };
 
   return (

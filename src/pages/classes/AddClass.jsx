@@ -18,7 +18,7 @@ const AddClass = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simulate form submission
+    
     console.log("Class Added:", form);
 
     // Redirect to class list

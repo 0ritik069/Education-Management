@@ -6,11 +6,17 @@ const ClassList = () => {
   const classes = [
     { id: 1, title: "Frontend Development", instructor: "John Doe", description: "HTML, CSS, JavaScript" },
     { id: 2, title: "Backend Development", instructor: "Jane Smith", description: "Node.js, Express, MySQL" },
+    { id: 2, title: "Data Science", instructor: "Ambuse", description: "Python" },
   ];
 
   const handleDelete = (id) => {
     // Simulate class deletion (this will later be connected to an API)
+    // window.confirm("Are you Sure Delete the Student");
     console.log(`Deleting class with ID: ${id}`);
+    const confirmDelete = window.confirm("Are you sure you want to delete this Class?");
+    if (confirmDelete) {
+      // setExams(classes.filter((class) => class.id !== id));
+    }
   };
 
   return (

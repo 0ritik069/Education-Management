@@ -18,3 +18,37 @@
   .sidebar.sidebar-open .nav-section .sidebar-mini-icon {
     display: inline-block !important;
   }
+
+  /* Optional: Make the icons bigger when expanded */
+.sidebar.sidebar-open .nav-item i {
+  font-size: 20px; /* Adjust as needed */
+}
+
+
+
+/* For Sidebar */
+.sidebar {
+  position: fixed; /* Make sure it's fixed in place */
+  z-index: 1000; /* Give it a high z-index */
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-open {
+  z-index: 9999; /* Ensure it comes above other elements */
+}
+
+/* For Top Navbar */
+.top-navbar {
+  position: relative;
+  z-index: 500; /* Lower z-index to ensure the sidebar is on top */
+}
+
+
+
+
+
+
+
+
+
+  

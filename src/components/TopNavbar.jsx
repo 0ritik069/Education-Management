@@ -3,7 +3,20 @@ import profile from "../assets/img/profile.jpg";
 
 const TopNavbar = () => {
   return (
-    <nav className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+    <nav className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom container-fluid"
+      style={{
+        position: "fixed",
+        top: 0,
+
+        right: 0,
+
+        zIndex: 1030,
+        backgroundColor: "#ffffff",
+        height: "70px",
+        padding: "10px 20px",
+        width: "calc(100% - 50px)", marginLeft: "75px"
+      }}
+    >
       <div className="container-fluid">
         {/* Search Bar (Desktop) */}
         <nav className="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
@@ -148,7 +161,7 @@ const TopNavbar = () => {
                 <img src={profile} alt="profile" className="avatar-img rounded-circle" />
               </div>
               <span className="profile-username">
-                <span className="op-7">Hi,</span> <span className="fw-bold">Hizrian</span>
+                <span className="op-7">Hi,</span> <span className="fw-bold">Ritik</span>
               </span>
             </a>
             <ul className="dropdown-menu dropdown-user animated fadeIn">
@@ -159,8 +172,8 @@ const TopNavbar = () => {
                       <img src={profile} alt="profile" className="avatar-img rounded" />
                     </div>
                     <div className="u-text">
-                      <h4>Hizrian</h4>
-                      <p className="text-muted">hello@example.com</p>
+                      <h4>Ritik</h4>
+                      <p className="text-muted">ritik@gmail.com</p>
                       <a href="profile.html" className="btn btn-xs btn-secondary btn-sm">View Profile</a>
                     </div>
                   </div>

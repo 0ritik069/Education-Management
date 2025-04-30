@@ -13,11 +13,11 @@ const EditClass = () => {
   });
 
   useEffect(() => {
-    // Simulate fetching existing data for class with ID
+    
     const existingClass = {
-      title: "Frontend Development",
-      instructor: "John Doe",
-      description: "Learn HTML, CSS, and JavaScript basics.",
+      title: setForm.title,
+      instructor: setForm.instructor,
+      description: setForm.description,
     };
 
     setForm(existingClass);
